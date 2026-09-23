@@ -1,6 +1,6 @@
 ---
 name: client-core
-description: "Orchestrate ethical client acquisition and commercial delivery for a solo software developer or small studio: positioning, finding and qualifying orders, prospect research, discovery routing, software estimation and pricing, proposals and SOWs, commercial agreement checks, lightweight CRM, client communication, closeout, referrals, and repeat sales. Use when looking for freelance or agency work, evaluating an inquiry, preparing for or summarizing a client call, estimating a website/app/bot/backend project, writing or reviewing an offer or agreement, tracking a sales pipeline, handling scope or payment discussions, closing a project, or planning follow-up work."
+description: "Orchestrate ethical client acquisition and commercial delivery for a solo developer or small studio: positioning, qualifying orders, prospect research, estimation and pricing, proposals and SOWs, agreement checks, lightweight CRM, closeout, referrals. Use when looking for freelance or agency work, evaluating an inquiry, preparing for or summarizing a client call, estimating a website/app/bot/backend project, reviewing an offer, tracking a pipeline, or handling scope or payment talks."
 ---
 
 # Client Core

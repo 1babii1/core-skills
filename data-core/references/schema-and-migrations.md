@@ -28,6 +28,22 @@ Use for new tables, model changes, and any schema or data change that reaches a 
 - Add `NOT NULL` in stages on a large table: add nullable, backfill in batches, add a validated check constraint, then set not-null.
 - Never mix a schema change and a multi-million-row backfill in one migration. Backfill in bounded batches with progress that can be resumed.
 
+## EF Core migration hazards
+
+A migration is code that runs once against data you cannot see; treat the scaffolded file as a draft.
+
+- A renamed property scaffolds as drop-column plus add-column and destroys the data. Replace it with `RenameColumn` (or expand/migrate/contract below) and never dismiss the scaffolder's possible-data-loss warning.
+- Do not use the current `DbContext` or entity classes inside a migration; they change later and old migrations must keep compiling and behaving identically. Use `Sql` for computed values and `InsertData`/`UpdateData`/`DeleteData` for fixed rows.
+- Adding a unique, foreign-key, or NOT NULL constraint to existing data: first query for rows that violate it and decide their fate. A green build and an empty local database prove nothing about this.
+- `CREATE INDEX CONCURRENTLY` cannot run in a transaction (pass `suppressTransaction: true` to `migrationBuilder.Sql`), scans the table twice, and a failure leaves an INVALID index behind: check `pg_index.indisvalid`, drop it, retry.
+- Never edit or delete a migration that reached a shared database, and never hand-edit the model snapshot; add a corrective migration. Write `Down` only when the original values can really be rebuilt, otherwise fail explicitly and document restore-from-backup.
+- Catch a forgotten migration in CI with a test asserting `context.Database.HasPendingModelChanges()` is false (EF Core 8+).
+- Prove the upgrade path on a database holding representative historical data (restored snapshot or seeded fixture), not only an empty one.
+
+## Composite indexes and ORDER BY
+
+A composite index lets the planner skip the sort only when column order **and each column's direction** match the ORDER BY. `ORDER BY a DESC, b ASC, c ASC` needs an index declared with those per-column directions; an all-ascending `(a, b, c)` does not serve it, and a backward scan does not help because it flips every column at once. In EF Core use `HasIndex(...).IsDescending(true, false, false)`; the default call creates every column ascending. Read the index back from the catalog (`pg_indexes.indexdef`) and check the printed direction per column, then run EXPLAIN (ANALYZE, BUFFERS) against the index the application will actually use, not a hand-written one used earlier to validate the idea: the two can differ in exactly this field and the mismatch yields a plan worse than no index.
+
 ## Expand, migrate, contract
 
 Whenever the old and new application versions will run at the same time — which is every rolling deploy:

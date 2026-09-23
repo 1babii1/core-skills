@@ -148,6 +148,10 @@ Use `monitoring-expert`, `sre-engineer`, `incident-runbook-templates`, and `cost
 
 Report the deployed version/digest, target, checks actually run, observable result, migration state, rollback point, and any unresolved risk. Never include secret values.
 
+## Harness integration
+
+When the repository has `.pi/laws/signals.md` (pi-engineering-harness), production infrastructure, migrations in the pipeline, and destructive operations are high-risk there: derive proof obligations from `.pi/laws/proof-obligations.md` (Migration, Destructive / irreversible operation), ask what is true only because exactly one instance runs and is written down nowhere, and run the `independent-verifier` before declaring a production change done. This skill owns pipeline and deployment mechanics; the harness owns the evidence bar.
+
 ## Completion gate
 
 Do not call delivery complete until applicable statements are true:

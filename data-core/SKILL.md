@@ -1,6 +1,6 @@
 ---
 name: data-core
-description: Orchestrate the data layer end to end — relational schema design, EF Core and SQL query performance, indexing, migrations and zero-downtime schema evolution, caching and invalidation strategy, Redis modeling, connection and pool behavior, backups and restore drills, PII classification and retention, test data and anonymization, multi-tenancy isolation. Use when designing or changing a database schema, diagnosing slow queries or database load, planning or reviewing a migration, deciding what to cache and how to invalidate it, introducing or auditing Redis, preparing a restore or recovery plan, or auditing how a project stores, protects, and deletes user data.
+description: "Orchestrate the data layer end to end: schema design, EF Core and SQL query performance, indexing, migrations and zero-downtime evolution, caching, Redis, connection pools, backups and restore drills, PII retention, test-data anonymization, tenant isolation. Use when designing or changing a schema, diagnosing slow queries or database load, planning or reviewing a migration, deciding what to cache, introducing Redis, preparing a restore plan, or auditing how user data is stored and deleted."
 ---
 
 # Data Core
@@ -113,6 +113,10 @@ Order broad audit work by expected damage:
 4. lock contention, pool exhaustion, unbounded result sets, and queries that degrade with data growth;
 5. missing indexes, avoidable round trips, weak cache invalidation;
 6. schema style, naming, and speculative optimization.
+
+## Harness integration
+
+When the repository has `.pi/laws/signals.md` (pi-engineering-harness), migrations, constraints, indexes, and destructive operations are high-risk there: derive proof obligations from `.pi/laws/proof-obligations.md` (Migration, Destructive / irreversible operation, Cache, Performance claims), keep task notes in `.pi/work/`, and run the `independent-verifier` before completion. A cache without a measured problem, an owner, a staleness bound, and outage behavior is a signal, not a default. This skill owns the data domain; the harness owns the evidence bar.
 
 ## Completion gate
 

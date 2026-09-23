@@ -36,7 +36,12 @@ Select all applicable cases:
 - OTP/magic-link expiry, incorrect value, replay, concurrent redemption, and rate limit;
 - cookie theft mitigations, logout behavior, and session invalidation;
 - proxy-generated wrong scheme/host/issuer;
-- unavailable authority/key store/database/provider and safe failure behavior.
+- unavailable authority/key store/database/provider and safe failure behavior;
+- register with an existing versus unknown address (same status, body, timing) and two concurrent registrations of one address;
+- external login whose provider email is unverified or whose verified flag is absent; external login into a pre-registered unconfirmed local account;
+- a second signed-in session after a password, 2FA, or email change (cookie and refresh token must be rejected);
+- repeated wrong second-factor or recovery codes counting toward lockout;
+- concurrent key rotation from several callers (exactly one new key), and a token issued before rotation still validating after it.
 
 ## Assertions
 

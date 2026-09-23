@@ -143,6 +143,10 @@ Order broad audit work by expected damage and dependency:
 
 Use severity, evidence, affected scope, exploit/failure path, recommended change, risk, and verification. Avoid one opaque quality score.
 
+## Harness integration
+
+When the repository has `.pi/laws/signals.md` (pi-engineering-harness), public contracts, concurrency, migrations, and authentication changes are high-risk there: derive proof obligations from `.pi/laws/proof-obligations.md`, use `.harness/scripts/verify.sh` for the change-scoped check (PASS / FAIL / NOT RUN; a green build proves compilation only), and run the `independent-verifier` before completion. An idempotency check backed only by a prior read is check-then-act: prove it with a concurrent test seeded against an aggregate that already has related rows. A new package needs a known-vulnerability check (`dotnet list package --vulnerable --include-transitive`), not just a successful build. This skill owns the backend domain; the harness owns the evidence bar.
+
 ## Completion gate
 
 Do not call work complete until applicable statements are true:

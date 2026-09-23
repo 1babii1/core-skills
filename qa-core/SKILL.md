@@ -104,13 +104,18 @@ Always report:
 - pass/fail/skip counts where available;
 - requirements and critical journeys covered;
 - artifacts created and their paths;
+- for each fix or regression test counted as evidence, the mutation that made it fail (see [test-data-flakiness-and-evidence.md](references/test-data-flakiness-and-evidence.md)), or an explicit statement that it was not proven;
 - failures classified with first actionable cause;
 - known gaps, waivers, owner, and expiry;
 - final verdict: `PASS`, `CONDITIONAL`, `BLOCKED`, or `INCONCLUSIVE`.
 
-Do not call a release `PASS` when a required gate was skipped, the target was ambiguous, evidence is stale, or critical requirements have no direct evidence.
+Do not call a release `PASS` when a required gate was skipped, a regression test was never shown to fail without its fix, the target was ambiguous, evidence is stale, or critical requirements have no direct evidence.
 
 Read [test-data-flakiness-and-evidence.md](references/test-data-flakiness-and-evidence.md) for isolation, artifact, and quarantine rules.
+
+## Harness integration
+
+When the repository has `.pi/laws/signals.md` (pi-engineering-harness), report verification with its vocabulary: PASS / FAIL / NOT RUN, never a skipped gate as PASS; use `.harness/scripts/verify.sh` for the change-scoped check and `.pi/laws/proof-obligations.md` to decide which property each test must prove. This skill owns the release-quality verdict; the harness `testing` and `verification` skills own the defect-derived rules above, so extend them rather than copying.
 
 ## Cross-core ownership
 

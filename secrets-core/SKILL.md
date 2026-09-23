@@ -62,6 +62,10 @@ Read `references/github-nuget.md` when a .NET project consumes or publishes GitH
 - If an MCP server needs one key, inject only that key into that MCP process or its parent agent session.
 - Prefer short-lived credentials and OIDC over long-lived cloud keys when supported.
 
+## Enforcement
+
+Rules in text are only followed, not enforced. In a repository with pi-engineering-harness installed for Claude Code (`install.sh --agent claude`), a PreToolUse hook (`.harness/hooks/guard-secrets.py`) blocks Read/Edit/Write/Grep/Glob/Bash access to env files (except `.env.example`), `*.enc.json|yaml`, age and private keys, and shell environment dumps. It is defense in depth, not a sandbox: it works on command text, so it also blocks a command that merely mentions such a path (a commit message, an `echo`); write the script to a file with the Write tool and run that instead of inlining the path. Add project-specific patterns in `.pi/project/secret-patterns.txt`. Keep real permissions underneath it.
+
 ## Verification
 
 Run `scripts/audit-project.sh <project-root>`. Fix failures without opening secret files. Confirm:

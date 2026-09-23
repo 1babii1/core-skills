@@ -1,6 +1,6 @@
 ---
 name: maintenance-core
-description: "Orchestrate ongoing support and maintenance of delivered software: support intake and triage, severity and SLA handling, incident response and postmortems, monitoring and alert tuning, SLOs and error budgets, dependency and runtime upgrades, security patching, recurring health checks, CI and pipeline upkeep, cost review, retainer scope boundaries, and takeover of an inherited or legacy project. Use when a live site, bot, app, or service breaks or degrades, when a client reports a problem or requests a small change under support, when planning or performing framework, runtime, or dependency upgrades, when setting up or reviewing monitoring and on-call procedures, when auditing an unfamiliar codebase you are about to maintain, or when defining, running, or ending a support agreement."
+description: "Orchestrate ongoing support and maintenance of delivered software: triage and SLAs, incident response and postmortems, monitoring and SLOs, runtime and dependency upgrades, security patching, CI upkeep, retainer scope, takeover of inherited projects. Use when a live site, bot, app, or service breaks or degrades, a client reports a problem or asks for a small change under support, upgrades or monitoring are planned, an unfamiliar codebase is taken over, or a support agreement starts or ends."
 ---
 
 # Maintenance Core
@@ -107,6 +107,10 @@ When several things need attention at once:
 7. cosmetic issues, cleanup, and optimization.
 
 Never let step 7 work delay step 4 work because it is more pleasant.
+
+## Harness integration
+
+When the repository has `.pi/laws/signals.md` (pi-engineering-harness), production changes made under support (hotfixes, dependency and runtime upgrades, data repairs) are high-risk there: write the scope contract first, derive proof obligations from `.pi/laws/proof-obligations.md`, and run the `independent-verifier` before closing an incident fix. Turn an incident or repeated mistake into a regression test and a `.pi/learnings/inbox.md` entry. This skill owns support and maintenance practice; the harness owns the evidence bar.
 
 ## Completion gate
 

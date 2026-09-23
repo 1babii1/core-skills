@@ -1,6 +1,6 @@
 ---
 name: auth-core
-description: Orchestrate secure authentication, authorization, Identity, OAuth 2.0, OpenID Connect, JWT, cookies, ASP.NET Core Identity, and OpenIddict work from architecture through implementation, hardening, testing, and production verification. Use when creating, changing, debugging, reviewing, or auditing login, registration, external providers, roles, permissions, claims, sessions, token issuance or validation, refresh tokens, service-to-service access, SSO, an authorization server, or protected APIs in .NET applications.
+description: "Orchestrate secure authentication and authorization in .NET: ASP.NET Core Identity, OAuth 2.0/OIDC, JWT, cookies, and OpenIddict, from architecture through hardening, testing, and production verification. Use when creating, changing, debugging, reviewing, or auditing login, registration, external providers, roles, permissions, claims, sessions, token issuance or validation, refresh tokens, service-to-service access, SSO, an authorization server, or protected APIs."
 ---
 
 # Auth Core
@@ -47,6 +47,7 @@ Read and apply only relevant installed skills. Keep one coordinated result.
 | OpenIddict | [openiddict.md](references/openiddict.md) plus current official OpenIddict docs | OpenIddict client, server, validation, token issuance, custom flows, external providers |
 | Threat analysis | [threat-model.md](references/threat-model.md) | New auth boundary, new client/provider, material flow change, or security audit |
 | Hardening | [security-hardening.md](references/security-hardening.md), `secrets-core`, `best-practices` | Implementation, audit, production readiness, or incident follow-up |
+| Known defect classes | [defect-checks.md](references/defect-checks.md); `auth-service` when installed (authoritative) | Register/login/recovery, external providers, credential or email changes, step-up, key rotation, passwords, passkeys |
 | Verification | [testing.md](references/testing.md), relevant .NET test skills, `playwright` | Every implementation/hardening task and auth-related regression |
 
 Do not use Duende-specific skills or APIs for an OpenIddict project. `aspnetcore-authentication`, `aspnetcore-authorization`, and `oauth-oidc-protocols` are provider-neutral; skills named `identityserver-*`, `duende-*`, or `token-management` are conditional on actual Duende dependencies.
@@ -99,7 +100,7 @@ For OpenIddict, read [openiddict.md](references/openiddict.md) before editing. D
 
 For new or materially changed flows, read [threat-model.md](references/threat-model.md), identify assets and trust boundaries, enumerate abuse cases, and connect each material threat to a control and test.
 
-Apply [security-hardening.md](references/security-hardening.md). Pay particular attention to account enumeration, brute force, credential stuffing, CSRF, open redirects, login CSRF, token/code replay, refresh-token theft, claim confusion, issuer/audience confusion, cross-tenant access, session fixation, key exposure, unsafe logging, and proxy/header mistakes.
+Apply [security-hardening.md](references/security-hardening.md), then walk [defect-checks.md](references/defect-checks.md) for every flow the change touches: those are failures that shipped in a real service, not generic advice. Pay particular attention to account enumeration, brute force, credential stuffing, CSRF, open redirects, login CSRF, token/code replay, refresh-token theft, claim confusion, issuer/audience confusion, cross-tenant access, session fixation, key exposure, unsafe logging, and proxy/header mistakes.
 
 ### 6. Verify from inside and outside
 
@@ -111,6 +112,10 @@ When a runnable UI exists, use `playwright` for the complete redirect/cookie/log
 
 Confirm external issuer and endpoint URLs, HTTPS enforcement, forwarded headers and trusted proxies, cookie domain/path/SameSite/Secure settings, CORS origins, data-protection/key persistence, signing-key availability and rotation plan, clock synchronization, rate limits, audit events, revocation/session behavior, and health/observability without secret leakage.
 
+## Harness integration
+
+When the repository has `.pi/laws/signals.md` (pi-engineering-harness), authentication and credential work is **high-risk** there: derive proof obligations from `.pi/laws/proof-obligations.md` (credential change, external identity linking, token/key lifecycle, step-up) and run the `independent-verifier` before calling the work complete. This skill owns the auth domain knowledge; the harness owns the evidence bar. Without the harness, the completion gate below still applies.
+
 ## Completion gate
 
 Do not call the work complete until applicable statements are true:
@@ -121,6 +126,7 @@ Do not call the work complete until applicable statements are true:
 - resource authorization is enforced server-side and defaults closed;
 - secrets and production keys are absent from source and logs;
 - positive, negative, expiry, replay, and authorization tests cover the changed flow;
+- every applicable row of [defect-checks.md](references/defect-checks.md) has a test that fails when the guard is removed;
 - build and relevant automated checks pass;
 - a real browser or HTTP flow has been exercised when runnable;
 - production-only assumptions and unverified external dependencies are clearly reported.
