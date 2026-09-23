@@ -5,7 +5,7 @@
 
 Checks (each is something that silently degrades a skill if it drifts):
   frontmatter     SKILL.md has name (== directory) and a description
-  description     <= 500 chars (every description is loaded into every session's context) and says
+  description     valid YAML (a plain scalar cannot contain ': ' - the skill would not load), <= 500 chars (every description is loaded into every session's context) and says
                   when to use the skill ("Use when ..." / "Use for ...")
   links           every relative markdown link in SKILL.md and references/ resolves
   orphans         every references/*.md is linked or mentioned by path in SKILL.md (else it is never read)
@@ -58,6 +58,11 @@ def main() -> int:
 
         if fm.get("name") != name:
             errors.append(f"{name}: frontmatter name is {fm.get('name')!r}, expected {name!r}")
+        raw = re.search(r"^description:[ \t]*(.*)$", text, re.M)
+        if raw:
+            value = raw.group(1)
+            if value and value[0] not in "\"'" and (": " in value or " #" in value or value[0] in "[]{}&*!|>%@`"):
+                errors.append(f"{name}: unquoted description is not valid YAML (contains ': ' or ' #'); wrap it in double quotes")
         desc = fm.get("description", "")
         if not desc:
             errors.append(f"{name}: description missing")
