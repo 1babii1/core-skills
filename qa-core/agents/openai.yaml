@@ -1,0 +1,4 @@
+interface:
+  display_name: "QA Core"
+  short_description: "Risk-based testing and release quality gates"
+  default_prompt: "Use $qa-core to design and execute a risk-based QA plan with release evidence."

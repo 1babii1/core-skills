@@ -1,0 +1,4 @@
+interface:
+  display_name: "Motion Core"
+  short_description: "Build and verify advanced web motion and graphics"
+  default_prompt: "Use $motion-core to design, implement, optimize, and verify this advanced web animation."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Backend Core"
+  short_description: "Build and audit production-ready .NET backends"
+  default_prompt: "Use $backend-core to design, implement, audit, and verify this .NET backend end to end."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Docs Core"
+  short_description: "Create, verify, maintain, and hand off project docs"
+  default_prompt: "Use $docs-core to create or update evidence-backed project documentation for the right audience and verify it against the source of truth."

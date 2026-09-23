@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Core"
+  short_description: "Discover, specify, measure, and validate product value"
+  default_prompt: "Use $product-core to research this product problem, define evidence-backed requirements and metrics, and choose the cheapest useful validation step."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Secrets Core"
+  short_description: "Secure project secrets and NuGet access"
+  default_prompt: "Use $secrets-core to configure safe secrets for this project."

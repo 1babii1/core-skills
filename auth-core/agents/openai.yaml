@@ -1,0 +1,4 @@
+interface:
+  display_name: "Auth Core"
+  short_description: "Secure Identity and OpenIddict engineering workflow"
+  default_prompt: "Use $auth-core to design, implement, audit, and verify authentication and authorization for this application."

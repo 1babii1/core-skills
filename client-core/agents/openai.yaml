@@ -1,0 +1,4 @@
+interface:
+  display_name: "Client Core"
+  short_description: "Find, qualify, price, win, and grow client work"
+  default_prompt: "Use $client-core to evaluate this client opportunity and recommend the safest concrete next step."

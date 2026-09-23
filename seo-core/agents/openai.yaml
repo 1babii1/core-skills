@@ -1,0 +1,4 @@
+interface:
+  display_name: "SEO Core"
+  short_description: "Run complete SEO audits, fixes, and verification"
+  default_prompt: "Use $seo-core to audit, improve, and verify this website end to end."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mobile Core"
+  short_description: "Build production-ready Expo and React Native apps"
+  default_prompt: "Use $mobile-core to architect, implement, test, and prepare this mobile app for release."

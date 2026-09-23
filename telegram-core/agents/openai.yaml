@@ -1,0 +1,4 @@
+interface:
+  display_name: "Telegram Core"
+  short_description: "Build production-ready Telegram bots and Mini Apps"
+  default_prompt: "Use $telegram-core to architect, implement, test, and prepare this Telegram bot or Mini App for production."

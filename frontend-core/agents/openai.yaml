@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend Core"
+  short_description: "Build and audit production-ready Astro and Next.js frontends"
+  default_prompt: "Use $frontend-core to design, implement, audit, and verify this frontend end to end."

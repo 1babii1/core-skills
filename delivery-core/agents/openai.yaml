@@ -1,0 +1,4 @@
+interface:
+  display_name: "Delivery Core"
+  short_description: "Ship applications safely from CI to production"
+  default_prompt: "Use $delivery-core to build, deploy, verify, and operationalize this application safely."

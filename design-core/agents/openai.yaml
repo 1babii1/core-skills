@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Core"
+  short_description: "End-to-end product interface design workflow"
+  default_prompt: "Use $design-core to design, build, and visually validate this interface."
