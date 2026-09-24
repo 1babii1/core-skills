@@ -116,7 +116,7 @@ Order broad audit work by expected damage:
 
 ## Harness integration
 
-When the repository has `.pi/laws/signals.md` (pi-engineering-harness), migrations, constraints, indexes, and destructive operations are high-risk there: derive proof obligations from `.pi/laws/proof-obligations.md` (Migration, Destructive / irreversible operation, Cache, Performance claims), keep task notes in `.pi/work/`, and run the `independent-verifier` before completion. A cache without a measured problem, an owner, a staleness bound, and outage behavior is a signal, not a default. This skill owns the data domain; the harness owns the evidence bar.
+When the repository has `.pi/laws/signals.md` (pi-engineering-harness), migrations, constraints, indexes, and destructive operations are high-risk there: derive proof obligations from `.pi/laws/proof-obligations.md` (Migration, Destructive / irreversible operation, Cache, Performance claims), keep task notes in `.pi/work/`, and run the `pi-independent-verifier` before completion. A cache without a measured problem, an owner, a staleness bound, and outage behavior is a signal, not a default. This skill owns the data domain; the harness owns the evidence bar.
 
 ## Completion gate
 

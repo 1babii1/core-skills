@@ -47,7 +47,7 @@ Read and apply only relevant installed skills. Keep one coordinated result.
 | OpenIddict | [openiddict.md](references/openiddict.md) plus current official OpenIddict docs | OpenIddict client, server, validation, token issuance, custom flows, external providers |
 | Threat analysis | [threat-model.md](references/threat-model.md) | New auth boundary, new client/provider, material flow change, or security audit |
 | Hardening | [security-hardening.md](references/security-hardening.md), `secrets-core`, `best-practices` | Implementation, audit, production readiness, or incident follow-up |
-| Known defect classes | [defect-checks.md](references/defect-checks.md); `auth-service` when installed (authoritative) | Register/login/recovery, external providers, credential or email changes, step-up, key rotation, passwords, passkeys |
+| Known defect classes | [defect-checks.md](references/defect-checks.md); `pi-auth-service` when installed (authoritative) | Register/login/recovery, external providers, credential or email changes, step-up, key rotation, passwords, passkeys |
 | Verification | [testing.md](references/testing.md), relevant .NET test skills, `playwright` | Every implementation/hardening task and auth-related regression |
 
 Do not use Duende-specific skills or APIs for an OpenIddict project. `aspnetcore-authentication`, `aspnetcore-authorization`, and `oauth-oidc-protocols` are provider-neutral; skills named `identityserver-*`, `duende-*`, or `token-management` are conditional on actual Duende dependencies.
@@ -114,7 +114,7 @@ Confirm external issuer and endpoint URLs, HTTPS enforcement, forwarded headers 
 
 ## Harness integration
 
-When the repository has `.pi/laws/signals.md` (pi-engineering-harness), authentication and credential work is **high-risk** there: derive proof obligations from `.pi/laws/proof-obligations.md` (credential change, external identity linking, token/key lifecycle, step-up) and run the `independent-verifier` before calling the work complete. This skill owns the auth domain knowledge; the harness owns the evidence bar. Without the harness, the completion gate below still applies.
+When the repository has `.pi/laws/signals.md` (pi-engineering-harness), authentication and credential work is **high-risk** there: derive proof obligations from `.pi/laws/proof-obligations.md` (credential change, external identity linking, token/key lifecycle, step-up) and run the `pi-independent-verifier` before calling the work complete. This skill owns the auth domain knowledge; the harness owns the evidence bar. Without the harness, the completion gate below still applies.
 
 ## Completion gate
 

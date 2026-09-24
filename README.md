@@ -46,4 +46,4 @@ string. Run it before each commit.
   does not earn a line.
 - Engineering skills end with a **Harness integration** section: when the repository has
   `.pi/laws/signals.md`, this skill supplies domain knowledge and pi-engineering-harness supplies the
-  proof-obligation and independent-verifier bar. Do not copy harness text; point to it.
+  proof-obligation and pi-independent-verifier bar. Do not copy harness text; point to it.

@@ -110,7 +110,7 @@ Never let step 7 work delay step 4 work because it is more pleasant.
 
 ## Harness integration
 
-When the repository has `.pi/laws/signals.md` (pi-engineering-harness), production changes made under support (hotfixes, dependency and runtime upgrades, data repairs) are high-risk there: write the scope contract first, derive proof obligations from `.pi/laws/proof-obligations.md`, and run the `independent-verifier` before closing an incident fix. Turn an incident or repeated mistake into a regression test and a `.pi/learnings/inbox.md` entry. This skill owns support and maintenance practice; the harness owns the evidence bar.
+When the repository has `.pi/laws/signals.md` (pi-engineering-harness), production changes made under support (hotfixes, dependency and runtime upgrades, data repairs) are high-risk there: write the scope contract first, derive proof obligations from `.pi/laws/proof-obligations.md`, and run the `pi-independent-verifier` before closing an incident fix. Turn an incident or repeated mistake into a regression test and a `.pi/learnings/inbox.md` entry. This skill owns support and maintenance practice; the harness owns the evidence bar.
 
 ## Completion gate
 

@@ -115,7 +115,7 @@ Read [test-data-flakiness-and-evidence.md](references/test-data-flakiness-and-ev
 
 ## Harness integration
 
-When the repository has `.pi/laws/signals.md` (pi-engineering-harness), report verification with its vocabulary: PASS / FAIL / NOT RUN, never a skipped gate as PASS; use `.harness/scripts/verify.sh` for the change-scoped check and `.pi/laws/proof-obligations.md` to decide which property each test must prove. This skill owns the release-quality verdict; the harness `testing` and `verification` skills own the defect-derived rules above, so extend them rather than copying.
+When the repository has `.pi/laws/signals.md` (pi-engineering-harness), report verification with its vocabulary: PASS / FAIL / NOT RUN, never a skipped gate as PASS; use `.harness/scripts/verify.sh` for the change-scoped check and `.pi/laws/proof-obligations.md` to decide which property each test must prove. This skill owns the release-quality verdict; the harness `pi-testing` and `pi-verification` skills own the defect-derived rules above, so extend them rather than copying.
 
 ## Cross-core ownership
 

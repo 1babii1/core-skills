@@ -2,7 +2,7 @@
 
 Failures found in a real ASP.NET Core Identity + OpenIddict service, each with the test that proves it
 closed. Apply the ones that match the flow being changed; verify against the installed library versions,
-not memory. When the repository has the `auth-service` skill (pi-engineering-harness), that skill is the
+not memory. When the repository has the `pi-auth-service` skill (pi-engineering-harness), that skill is the
 authoritative, versioned copy of this list and its proof obligations; this file is the short form for
 repositories without it.
 
