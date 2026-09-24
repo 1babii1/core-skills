@@ -1,0 +1,4 @@
+interface:
+  display_name: "Distinctive Web Craft"
+  short_description: "Авторская система выразительных сайтов"
+  default_prompt: "Use $craft-distinctive-websites to design and build a distinctive, reference-driven website with purposeful motion and production-quality frontend behavior."
